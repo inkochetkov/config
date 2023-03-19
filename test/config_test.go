@@ -7,14 +7,23 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+type Config struct {
+	HTTP *Server `yaml:"server_http"`
+}
+
+type Server struct {
+	Host string `yaml:"host"`
+	Port string `yaml:"port" default:"8080"`
+}
+
 func TestConfig(t *testing.T) {
 	t.Log("Test check config")
 
-	conf, err := config.NewConfig("config.yaml")
+	conf, err := config.NewConfig("config.yaml", &Config{})
 	assert.NoError(t, err)
 
-	want := &config.Config{
-		HTTP: &config.Server{
+	want := &Config{
+		HTTP: &Server{
 			Host: "127.0.0.1",
 			Port: "8080",
 		},

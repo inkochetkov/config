@@ -6,21 +6,10 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-// root config
-type Config struct {
-	HTTP     *Server   `yaml:"server_http"`
-	GRPC     *Server   `yaml:"server_grpc"`
-	DataBase *DataBase `yaml:"data_base"`
-	Broker   *Broker   `yaml:"broker"`
-	Other    Other
-}
+// NewConfig returns a new decoded сonfig struct by layout
+func NewConfig(configPath string, entity any) (any, error) {
 
-type Other map[string]any
-
-// NewConfig returns a new decoded Config struct
-func NewConfig(configPath string) (*Config, error) {
-
-	config := &Config{}
+	config := entity
 
 	file, err := os.ReadFile(configPath)
 	if err != nil {

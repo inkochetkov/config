@@ -14,7 +14,7 @@ example
 
     conf, err := config.NewConfigAny("config.yaml")
     if err!= nil{
-
+        ...
     }
 
     log.Println(conf)
@@ -25,9 +25,15 @@ loads the config according to the structure, the structure is in the form of an 
 
 example
 
-    conf, err := config.NewConfig("config.yaml")
-    if err!= nil{
+    type Server struct {
+	    Host string `yaml:"host"`
+	    Port string `yaml:"port" default:"8080"`
+    }
 
+
+    conf, err := config.NewConfig("config.yaml", &Server{})
+    if err!= nil{
+        ...
     }
 
     log.Println(conf)
