@@ -1,16 +1,15 @@
-package test
+package config
 
 import (
 	"testing"
 
-	"github.com/inkochetkov/config/pkg/config"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestConfigAny(t *testing.T) {
 	t.Log("Test check config any")
 
-	conf, err := config.NewConfigAny("config.yaml")
+	conf, err := NewConfigAny("config.yaml")
 	assert.NoError(t, err)
 
 	want := map[string]any{

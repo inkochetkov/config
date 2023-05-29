@@ -1,9 +1,8 @@
-package test
+package config
 
 import (
 	"testing"
 
-	"github.com/inkochetkov/config/pkg/config"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -19,7 +18,7 @@ type Server struct {
 func TestConfig(t *testing.T) {
 	t.Log("Test check config")
 
-	conf, err := config.NewConfig("config.yaml", &Config{})
+	conf, err := NewConfig("config.yaml", &Config{})
 	assert.NoError(t, err)
 
 	want := &Config{

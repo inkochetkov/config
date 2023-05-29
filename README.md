@@ -2,6 +2,8 @@
 
     config loader options
 
+    uses yaml 
+
 ### git
 
     go get "github.com/inkochetkov/config/pkg/config"
@@ -37,3 +39,7 @@ example
     }
 
     log.Println(conf)
+
+### License
+
+Released under the MIT License
